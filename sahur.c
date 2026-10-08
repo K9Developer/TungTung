@@ -29,7 +29,7 @@ void renderTungs(Sahur* const* sahur) {
 
     for (int i = 0; i < (*sahur)->tungCount; i++) {
         if ((*sahur)->tungs[i].shouldClose) {
-            (*sahur)->tungs[i] = (*sahur)->tungs[(*sahur)->tungCount-1];
+            (*sahur)->tungs[i] = (*sahur)->tungs[--(*sahur)->tungCount];
             i--;
         }
     }

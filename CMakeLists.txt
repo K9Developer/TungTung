@@ -3,7 +3,7 @@ project(TungTung C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_library(TungTung STATIC sahur.c tung.c)
+add_library(TungTung STATIC sahur.c tung.c cappuccina.c)
 
 add_executable(test_tung test_tung.c)
 

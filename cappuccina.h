@@ -1,8 +1,155 @@
-//
-// Created by ilaik on 10/8/2026.
-//
-
 #ifndef CAPPUCCINA_H
 #define CAPPUCCINA_H
+#include "GLFW/glfw3.h"
+#include "tung.h"
+
+typedef enum {
+    PRESS = 1,
+    RELEASE = 0,
+    HOLD = 2
+} CappuccinaAction;
+
+typedef enum {
+    CAP_SPACE = 32,
+    CAP_APOSTROPHE = 39  /* ' */,
+    CAP_COMMA = 44  /* , */,
+    CAP_MINUS = 45  /* - */,
+    CAP_PERIOD = 46  /* . */,
+    CAP_SLASH = 47  /* / */,
+    CAP_0 = 48,
+    CAP_1 = 49,
+    CAP_2 = 50,
+    CAP_3 = 51,
+    CAP_4 = 52,
+    CAP_5 = 53,
+    CAP_6 = 54,
+    CAP_7 = 55,
+    CAP_8 = 56,
+    CAP_9 = 57,
+    CAP_SEMICOLON = 59  /* ; */,
+    CAP_EQUAL = 61  /* = */,
+    CAP_A = 65,
+    CAP_B = 66,
+    CAP_C = 67,
+    CAP_D = 68,
+    CAP_E = 69,
+    CAP_F = 70,
+    CAP_G = 71,
+    CAP_H = 72,
+    CAP_I = 73,
+    CAP_J = 74,
+    CAP_K = 75,
+    CAP_L = 76,
+    CAP_M = 77,
+    CAP_N = 78,
+    CAP_O = 79,
+    CAP_P = 80,
+    CAP_Q = 81,
+    CAP_R = 82,
+    CAP_S = 83,
+    CAP_T = 84,
+    CAP_U = 85,
+    CAP_V = 86,
+    CAP_W = 87,
+    CAP_X = 88,
+    CAP_Y = 89,
+    CAP_Z = 90,
+    CAP_LEFT_BRACKET = 91  /* [ */,
+    CAP_BACKSLASH = 92  /* \ */,
+    CAP_RIGHT_BRACKET = 93  /* ] */,
+    CAP_GRAVE_ACCENT = 96  /* ` */,
+    CAP_WORLD_1 = 161 /* non-US #1 */,
+    CAP_WORLD_2 = 162 /* non-US #2 */,
+    CAP_ESCAPE = 256,
+    CAP_ENTER = 257,
+    CAP_TAB = 258,
+    CAP_BACKSPACE = 259,
+    CAP_INSERT = 260,
+    CAP_DELETE = 261,
+    CAP_RIGHT = 262,
+    CAP_LEFT = 263,
+    CAP_DOWN = 264,
+    CAP_UP = 265,
+    CAP_PAGE_UP = 266,
+    CAP_PAGE_DOWN = 267,
+    CAP_HOME = 268,
+    CAP_END = 269,
+    CAP_CAPS_LOCK = 280,
+    CAP_SCROLL_LOCK = 281,
+    CAP_NUM_LOCK = 282,
+    CAP_PRINT_SCREEN = 283,
+    CAP_PAUSE = 284,
+    CAP_F1 = 290,
+    CAP_F2 = 291,
+    CAP_F3 = 292,
+    CAP_F4 = 293,
+    CAP_F5 = 294,
+    CAP_F6 = 295,
+    CAP_F7 = 296,
+    CAP_F8 = 297,
+    CAP_F9 = 298,
+    CAP_F10 = 299,
+    CAP_F11 = 300,
+    CAP_F12 = 301,
+    CAP_F13 = 302,
+    CAP_F14 = 303,
+    CAP_F15 = 304,
+    CAP_F16 = 305,
+    CAP_F17 = 306,
+    CAP_F18 = 307,
+    CAP_F19 = 308,
+    CAP_F20 = 309,
+    CAP_F21 = 310,
+    CAP_F22 = 311,
+    CAP_F23 = 312,
+    CAP_F24 = 313,
+    CAP_F25 = 314,
+    CAP_KP_0 = 320,
+    CAP_KP_1 = 321,
+    CAP_KP_2 = 322,
+    CAP_KP_3 = 323,
+    CAP_KP_4 = 324,
+    CAP_KP_5 = 325,
+    CAP_KP_6 = 326,
+    CAP_KP_7 = 327,
+    CAP_KP_8 = 328,
+    CAP_KP_9 = 329,
+    CAP_KP_DECIMAL = 330,
+    CAP_KP_DIVIDE = 331,
+    CAP_KP_MULTIPLY = 332,
+    CAP_KP_SUBTRACT = 333,
+    CAP_KP_ADD = 334,
+    CAP_KP_ENTER = 335,
+    CAP_KP_EQUAL = 336,
+    CAP_LEFT_SHIFT = 340,
+    CAP_LEFT_CONTROL = 341,
+    CAP_LEFT_ALT = 342,
+    CAP_LEFT_SUPER = 343,
+    CAP_RIGHT_SHIFT = 344,
+    CAP_RIGHT_CONTROL = 345,
+    CAP_RIGHT_ALT = 346,
+    CAP_RIGHT_SUPER = 347,
+    CAP_MENU = 348
+} CappuccinaCap;
+
+typedef enum {
+    MOD_SHIFT = 0x0001,
+    MOD_CONTROL = 0x0002,
+    MOD_ALT = 0x0004,
+    MOD_SUPER = 0x0008,
+    MOD_CAPS_LOCK = 0x0010,
+    MOD_NUM_LOCK = 0x0020
+} CappuccinaMod;
+
+typedef struct {
+    CappuccinaCap key;
+    int scancode;
+    CappuccinaAction action;
+    int mod_flags; // taken from CappuccinaMod
+    Tung* src_tung;
+} CappuccinaEvent;
+
+int setCappuccinaListener(void (*callback)(CappuccinaEvent));
+void _sahurCappuccinaListener(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 #endif //CAPPUCCINA_H

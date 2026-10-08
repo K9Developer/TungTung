@@ -14,5 +14,6 @@ typedef struct {
 
 ReturnTung newTung(char* tungTitle, int width, int height);
 void destoryTung(Tung* tung);
+Tung* getTungByGLFWWindow(GLFWwindow const* win);
 
 #endif //TUNG_H
