@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.28)
 project(TungTung C)
 
 set(CMAKE_C_STANDARD 23)
+set(CMAKE_C_STANDARD_REQUIRED ON)
 
 add_library(TungTung STATIC sahur.c tung.c cappuccina.c)
 
