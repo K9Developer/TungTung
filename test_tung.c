@@ -9,13 +9,16 @@ void onCappuccina(CappuccinaEvent event) {
             newTung("Tung Tung", 50, 50);
         }
     }
-
-
 }
 
 int main() {
     if (initSahur()) return -1;
-    newTung("Tung Tung1", 400, 600);
+    ReturnTung tung = newTung("Tung Tung1", 400, 600);
+    if (tung.isValid == false) {
+        printf("Failed to create tung.\n");
+        return -1;
+    }
+
     setCappuccinaListener(onCappuccina);
     patapimLoop();
     return 0;
